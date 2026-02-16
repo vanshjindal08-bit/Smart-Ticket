@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Ticket Booking</title>
+</head>
+<body>
+
+    <h1>Smart Ticket Booking</h1>
+
+    <h3>Available Seats</h3>
+
+    <ul>
+        {% for category, details in seats.items() %}
+            <li>
+                <b>{{ category }}</b> |
+                Price: ₹{{ details.price }} |
+                Available: {{ details.available }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <h3>Book Ticket</h3>
+
+    <form action="/book" method="POST">
+        <label>User ID:</label><br>
+        <input type="text" name="user_id" required><br><br>
+
+        <label>Select Category:</label><br>
+        <select name="category">
+            <option value="VIP">VIP</option>
+            <option value="Premium">Premium</option>
+            <option value="General">General</option>
+        </select><br><br>
+
+        <button type="submit">Book Now</button>
+    </form>
+
+</body>
+</html>
